@@ -1,0 +1,101 @@
+
+{% load static %}
+{% if messages %}
+    {% for message in messages %}
+        <script>M.toast({html: "{{message}}", classes: 'blue rounded', displayLength:2000});</script>
+    {% endfor %}
+{% endif %}
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<style>
+body {
+ font-family: Arial, sans-serif;
+}
+
+.login-container {
+ width: 300px;
+ padding: 16px;
+ background-color: white;
+ margin: 0 auto;
+ margin-top: 100px;
+ box-shadow: 0px 0px 5px 0px grey;
+}
+
+.login-container h1 {
+ text-align: center;
+ margin-bottom: 24px;
+}
+
+.login-container label {
+ display: block;
+ margin-bottom: 4px;
+}
+
+.login-container input {
+ width: 100%;
+ padding: 8px;
+ margin-bottom: 24px;
+ box-sizing: border-box;
+ border-radius: 20px;
+}
+
+.login-container button {
+ width: 50%;
+ padding: 8px;
+ background-color: blue;
+ color: white;
+ border: none;
+ cursor: pointer;
+ border-radius: 20px;
+ margin-left: 70px;
+}
+
+.login-container button:hover {
+ background-color: darkblue;
+}
+</style>
+<body>
+ <div class="login-container">
+    <h1>Login</h1>
+    <form action="loginview" method="post">
+        {% csrf_token %}
+      <label for="adminstaffnumber">Staff Number:</label>
+      <input type="text" id="adminstaffnumber" name="adminstaffnumber" required>
+      
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      
+      <button type="submit">Login</button><br><br>
+      Dont have an account? <a href="/">signup</a>
+    </form>
+ </div>
+</body>
+</html>
+
+
+
+
+
+<!--<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="adminstaffnumber">Admin/Staff Number:</label>
+        <input type="text" name="adminstaffnumber" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" required><br><br>
+        <input type="submit" value="Login">
+    </form>
+    {% if error_message %}
+        <p>{{ error_message }}</p>
+    {% endif %}
+</body>
+</html>-->

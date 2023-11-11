@@ -1,0 +1,183 @@
+{% if messages %}
+         {% for message in messages %}
+          <script>M.toast({html: "{{message}}", classes: 'blue rounded', displayLength:2000});</script>
+        {% endfor %}
+{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.min.js"></script>
+</head>
+<style>
+    /* Overall page styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+/* Styles for the card */
+.card {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 100px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-container {
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.progress {
+    width: 400px;
+    height: 100px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-color: dimgray;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.progress-text {
+    font-size: 24px;
+}
+
+
+/* Styles for the table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+/* Styles for the buttons */
+.btn {
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+</style>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        
+                        <h4 class="card-title">adminname</h4>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="row">
+                    <!--<div class="col-sm-4">
+                        <div class="card bg-success">
+                            <div class="card-body">
+                                <h4 class="card-title">Number of Students in Session</h4>
+                            </div>-->
+                        </div>
+                    </div>
+                    
+                        <div class="progress" id="progress">
+                            <h4 class="card-title">Students Progress</h4>
+                        </div>
+                    
+                    
+                    <div class="col-sm-4">
+                        <div class="card bg-info">
+                            <div class="card-body">
+                                <h4 class="card-title">Students Ready to Graduate</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="manage">
+                        <div class="col-sm-4">
+                            <div class="card bg-warning">
+                                <div class="card-body">
+                                    <h4 class="card-title">Manage Students</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form class="form-inline">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">adminname</th>
+                                    <th scope="col">adminemail</th>
+                                    <th scope="col">adminstaffnumber</th>
+                                    <th scope="col">adminphonenumber</th>
+                                    <th scope="col">institution</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for Member in data %}
+                                <tr>
+                                    <td> adminname </td>
+                                    <td>{{ Member.adminemail }}</td>
+                                    <td>{{ Member.adminstaffnumber }}</td>
+                                    <td>{{ Member.adminphonenumber }}</td>
+                                    <td>{{ Member.institution }}</td>
+                                </tr>
+                                {% endfor %}
+                                <!-- Add more table rows as needed -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

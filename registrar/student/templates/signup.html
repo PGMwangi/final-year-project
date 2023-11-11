@@ -1,0 +1,92 @@
+{% if messages %}
+         {% for message in messages %}
+          <script>M.toast({html: "{{message}}", classes: 'blue rounded', displayLength:2000});</script>
+        {% endfor %}
+{% endif %}
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<style>
+body {
+ font-family: Arial, sans-serif;
+ font-style: bold;
+}
+
+.login-container {
+ width: 300px;
+ padding: 16px;
+ background-color: white;
+ margin: 0 auto;
+ margin-top: 0px;
+ box-shadow: 0px 0px 5px 0px grey;
+}
+
+.login-container h1 {
+ text-align: center;
+ margin-bottom: 24px;
+}
+
+.login-container label {
+ display: block;
+ margin-bottom: 4px;
+}
+
+.login-container input {
+ width: 100%;
+ padding: 10px;
+ margin-bottom: 10px;
+ box-sizing: border-box;
+ border-width: medium;
+ border-radius: 20px;
+}
+
+.login-container button {
+ width: 50%;
+ padding: 10px;
+ background-color: blue;
+ color: white;
+ border: none;
+ cursor: pointer;
+ border-width: medium;
+ border-radius: 20px;
+ margin-left: 70px;
+}
+
+.login-container button:hover {
+ background-color: darkblue;
+}
+</style>
+<body>
+ <div class="login-container">
+    <h1>REGISTER</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+      <label for="adminname">Admin Name:</label>
+      <input type="text" id="adminname" name="adminname" required>
+      
+      <label for="adminemail">Admin Email:</label>
+      <input type="email" id="adminemail" name="adminemail" required>
+
+      <label for="adminstaffnumber">Admin StaffNumber:</label>
+      <input type="text" id="adminstaffnumber" name="adminstaffnumber" required>
+
+      <label for="adminphonenumber">Admin Phone Number:</label>
+      <input type="text" id="adminphonenumber" name="adminphonenumber" required>
+
+      <label for="institution">Institution:</label>
+      <input type="text" id="institution" name="institution" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <label for="confirmpassword">Confirm Password:</label>
+      <input type="password" id="confirmpassword" name="confirmpassword" required>
+      
+      <button type="submit">SUBMIT</button><br><br>
+      Already have an account? <a href="loginview">login</a>
+    </form>
+ </div>
+</body>
+</html>
